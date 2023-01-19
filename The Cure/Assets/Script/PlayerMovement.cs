@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private SpriteRenderer player;
     private int doubleJump = 0;
-
-    private enum MovementState { Idle, Running, Jumping }
+    private float dirX;
+    private enum MovementState { Idle, Running, Jumping, Falling }
     
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForced;
@@ -24,9 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        MovementState state;
-
-        float dirX = Input.GetAxisRaw("Horizontal");
+        dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveSpeed * dirX, rb.velocity.y);
 
         if(Input.GetButtonDown("Jump") && doubleJump < 2)
@@ -35,7 +33,15 @@ public class PlayerMovement : MonoBehaviour
             doubleJump++;
         }
 
-        if(dirX > 0) 
+        UpdateAnimation();
+
+    }
+
+    private void UpdateAnimation()
+    {
+        MovementState state;
+
+        if(dirX > 0)
         {
             state = MovementState.Running;
             player.flipX = false;
@@ -43,19 +49,25 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.Running;
             player.flipX = true;
-        } else
+        }
+        else
         {
             state = MovementState.Idle;
         }
 
-        if(rb.velocity.y > .1f || rb.velocity.y < -.1f)
+        if(rb.velocity.y > .1f)
         {
             state = MovementState.Jumping;
+        } else if(rb.velocity.y < -.1f)
+        {
+            state = MovementState.Falling;
+
         }
 
         anim.SetInteger("state", (int)state);
-
     }
+
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
