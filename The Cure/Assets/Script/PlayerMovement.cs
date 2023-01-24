@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
+    private BoxCollider2D coll;
     private SpriteRenderer player;
     private int doubleJump = 0;
     private float dirX;
@@ -13,8 +14,10 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForced;
+    [SerializeField] private LayerMask ground;
     private bool moveLeft;
     private bool moveRight;
+    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +25,12 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         player = GetComponent<SpriteRenderer>();
-        moveLeft = false;
-        moveRight = false;
+        coll = GetComponent<BoxCollider2D>();
     }
 
     void Update()
     {
+
         //dirX = Input.GetAxisRaw("Horizontal");
         //rb.velocity = new Vector2(moveSpeed * dirX, rb.velocity.y);
 
@@ -36,9 +39,16 @@ public class PlayerMovement : MonoBehaviour
         //    rb.velocity = new Vector2(rb.velocity.x, jumpForced);
         //    doubleJump++;
         //}
-
         Move();
         UpdateAnimation();
+        CekGrounded();
+
+        Debug.Log(doubleJump);
+        
+        if(isGrounded)
+        {
+            doubleJump = 0;
+        }
 
     }
 
@@ -82,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
     // Jumping
     public void Jump()
     {
-        if(doubleJump < 2)
+        if(doubleJump < 1)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForced);
             doubleJump++;
@@ -120,13 +130,17 @@ public class PlayerMovement : MonoBehaviour
         anim.SetInteger("state", (int)state);
     }
 
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    void CekGrounded()
     {
-        if (collision.gameObject.CompareTag("ground")){
-            doubleJump = 0;
-        }
+        isGrounded = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .01f, ground);
     }
+
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("ground")){
+    //        doubleJump = 0;
+    //    }
+    //}
 
 }
