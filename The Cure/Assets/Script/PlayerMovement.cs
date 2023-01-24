@@ -13,30 +13,83 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForced;
+    private bool moveLeft;
+    private bool moveRight;
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         player = GetComponent<SpriteRenderer>();
+        moveLeft = false;
+        moveRight = false;
     }
 
-    private void Update()
+    void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveSpeed * dirX, rb.velocity.y);
+        //dirX = Input.GetAxisRaw("Horizontal");
+        //rb.velocity = new Vector2(moveSpeed * dirX, rb.velocity.y);
 
-        if(Input.GetButtonDown("Jump") && doubleJump < 2)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForced);
-            doubleJump++;
-        }
+        //if(Input.GetButtonDown("Jump") && doubleJump < 2)
+        //{
+        //    rb.velocity = new Vector2(rb.velocity.x, jumpForced);
+        //    doubleJump++;
+        //}
 
+        Move();
         UpdateAnimation();
 
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(dirX, rb.velocity.y);
+    }
+
+    // Movement Horizontal
+    void Move()
+    {
+        if(moveLeft)
+        {
+            dirX = -moveSpeed;
+        } else if(moveRight)
+        {
+            dirX = moveSpeed;
+        } else
+        {
+            dirX = 0;
+        }
+    }
+
+    public void pointerDownLeft()
+    {
+        moveLeft = true;
+    }
+    public void pointerUpLeft()
+    {
+        moveLeft = false;
+    }
+    public void pointerDownRight()
+    {
+        moveRight = true;
+    }
+    public void pointerUpRight()
+    {
+        moveRight = false;
+    }
+
+    // Jumping
+    public void Jump()
+    {
+        if(doubleJump < 2)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForced);
+            doubleJump++;
+        }
+    }
+
+    // Player Animation
     private void UpdateAnimation()
     {
         MovementState state;
