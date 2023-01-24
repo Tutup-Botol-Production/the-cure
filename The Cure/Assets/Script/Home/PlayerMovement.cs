@@ -42,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
         Move();
         UpdateAnimation();
         CekGrounded();
-
-        Debug.Log(doubleJump);
         
         if(isGrounded)
         {
@@ -134,13 +132,5 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .01f, ground);
     }
-
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("ground")){
-    //        doubleJump = 0;
-    //    }
-    //}
 
 }
