@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 9381a5799eab88045bdf198bd72c06a4
+  - enabled: 1
+    path: Assets/Scenes/Cut Scene.unity
+    guid: ce67fa5e3807caf409797b214c23e509
   - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: dabc2b0715938a447832f28b50a09ba6
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: 9381a5799eab88045bdf198bd72c06a4
+    path: Assets/Scenes/Reys Room.unity
+    guid: afc3a20f233a2494881a686a791ffaf1
   m_configObjects: {}
