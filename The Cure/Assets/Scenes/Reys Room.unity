@@ -1049,6 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveScene: 
+  player: {fileID: 1449172252}
   itemInteract: {fileID: 0}
   levelLoader: {fileID: 1628424901}
 --- !u!4 &1174858849

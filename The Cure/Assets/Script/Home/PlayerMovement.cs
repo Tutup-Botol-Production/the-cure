@@ -31,14 +31,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        //dirX = Input.GetAxisRaw("Horizontal");
-        //rb.velocity = new Vector2(moveSpeed * dirX, rb.velocity.y);
-
-        //if(Input.GetButtonDown("Jump") && doubleJump < 2)
-        //{
-        //    rb.velocity = new Vector2(rb.velocity.x, jumpForced);
-        //    doubleJump++;
-        //}
         Move();
         UpdateAnimation();
         CekGrounded();
