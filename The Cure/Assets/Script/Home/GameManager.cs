@@ -23,10 +23,12 @@ public class GameManager : MonoBehaviour
     {
         if (isMenuOpen)
         {
+            Time.timeScale = 1;
             subMenu.SetActive(false);
             isMenuOpen = false;
         } else
         {
+            Time.timeScale = 0;
             subMenu.SetActive(true);
             isMenuOpen = true;
         }
