@@ -7,8 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public string moveScene;
-    public GameObject itemInteract = null;
     public LevelLoader levelLoader;
+
+    [HideInInspector] public GameObject itemInteract = null;
+    [HideInInspector] private bool isMenuOpen = false;
+
+    [SerializeField] private GameObject subMenu;
 
     public void OnInteractBtnClick()
     {
@@ -18,6 +22,21 @@ public class GameManager : MonoBehaviour
         } else if(itemInteract.name == "Door")
         {
             levelLoader.GetComponent<LevelLoader>().LoadLevel();
+        }
+    }
+
+    public void OnMenuBtnClick()
+    {
+        if (isMenuOpen)
+        {
+            Time.timeScale = 1;
+            isMenuOpen = false;
+            subMenu.SetActive(false);
+        } else
+        {
+            Time.timeScale = 0;
+            isMenuOpen = true;
+            subMenu.SetActive(true);
         }
     }
 
