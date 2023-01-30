@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public string moveScene;
     public LevelLoader levelLoader;
 
     [HideInInspector] public GameObject itemInteract = null;
@@ -19,9 +18,12 @@ public class GameManager : MonoBehaviour
         if (itemInteract != null && itemInteract.name != "Door")
         {
             Destroy(itemInteract);
-        } else if(itemInteract.name == "Door")
+        } else if (itemInteract.CompareTag("main door"))
         {
-            levelLoader.GetComponent<LevelLoader>().LoadLevel();
+            levelLoader.GetComponent<LevelLoader>().LoadNextLevel();
+        } else if (itemInteract.CompareTag("reys door"))
+        {
+            levelLoader.GetComponent<LevelLoader>().LoadPrevLevel();
         }
     }
 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        Time.timeScale = 1;
+        levelLoader.GetComponent<LevelLoader>().LoadScene(0);
     }
 }

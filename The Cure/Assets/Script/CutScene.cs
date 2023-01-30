@@ -12,6 +12,14 @@ public class CutScene : MonoBehaviour
     {
         SceneManager.LoadScene("Home");
     }
+
+    void Awake()
+    {
+        if(PlayerPrefs.GetInt("LastActiveScene") == 1)
+        {
+            PlayerPrefs.SetInt("LastActiveScene", 2);
+        }
+    }
     void Start()
     {
         waitTime = GetComponent<PlayableDirector>().duration;
