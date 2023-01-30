@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public GameManager gameManager;
     public Animator transition;
     public float transitionTime = 1f;
-    
-    public void LoadLevel()
-    {
-        StartCoroutine(LoadLevel(gameManager.moveScene));
-    }
 
-    IEnumerator LoadLevel(string levelIndex)
+    public void LoadScene(int sceneNumber = 0) => StartCoroutine(LoadLevel(sceneNumber));
+    public void LoadNextLevel(int moveScene = 1) => StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + moveScene));
+    public void LoadPrevLevel(int moveScene = 1) => StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - moveScene));
+
+
+
+    IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
 

@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &15040586 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2071791585436557448, guid: 32cfc325079be454790c2942d689d388, type: 3}
-  m_PrefabInstance: {fileID: 4921817779923836195}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ae46fddc0273b841b78d2154af8d21e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &20050726 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4202335786935977836, guid: 268161c128185814584e6fa0d15135c8, type: 3}
@@ -1281,8 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025fbf1d5a90dc9489dc94a5a13c782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveScene: 
-  levelLoader: {fileID: 15040586}
+  levelLoader: {fileID: 1247511053}
   itemInteract: {fileID: 0}
   subMenu: {fileID: 2094223337}
 --- !u!4 &1145321249
@@ -1300,6 +1288,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247511053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2071791585436557448, guid: 32cfc325079be454790c2942d689d388, type: 3}
+  m_PrefabInstance: {fileID: 4921817779923836195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae46fddc0273b841b78d2154af8d21e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1351835143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,7 +1373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactBtn: {fileID: 824580857}
   gameManager: {fileID: 1145321247}
-  changeScene: Reys Room
+  changeScene: 
 --- !u!212 &1351835147
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2374,6 +2373,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1145321248}
+    - target: {fileID: 7117942715967531325, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnInteractBtnClick
+      objectReference: {fileID: 0}
     - target: {fileID: 7117942716304402307, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
