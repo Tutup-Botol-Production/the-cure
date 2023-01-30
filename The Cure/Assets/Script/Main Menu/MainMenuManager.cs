@@ -12,8 +12,9 @@ public class MainMenuManager : MonoBehaviour
     private int lastScene;
     private void Awake()
     {
-        Debug.Log(PlayerPrefs.GetInt("LastActiveScene"));
-        lastScene = PlayerPrefs.GetInt("LastActiveScene", 0);
+        PlayerPrefs.DeleteKey("LastActiveScene");
+        //Debug.Log(PlayerPrefs.GetInt("LastActiveScene"));
+        //lastScene = PlayerPrefs.GetInt("LastActiveScene", 0);
     }
     private void Start()
     {
