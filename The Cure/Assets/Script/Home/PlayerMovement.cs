@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Transform player;
     private Rigidbody2D rb;
     private Animator anim;
     private BoxCollider2D coll;
-    private SpriteRenderer player;
     private int doubleJump = 0;
     private float dirX;
     private enum MovementState { Idle, Running, Jumping, Falling }
@@ -18,14 +18,16 @@ public class PlayerMovement : MonoBehaviour
     private bool moveLeft;
     private bool moveRight;
     private bool isGrounded;
+    private bool isFacingRight;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        player = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
+        player = GetComponent<Transform>();
+        isFacingRight = true;
     }
 
     void Update()
@@ -62,9 +64,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        player.Rotate(0, 180, 0);
+    }
+
     public void pointerDownLeft()
     {
         moveLeft = true;
+        if(isFacingRight)
+        {
+            Flip();
+        }
     }
     public void pointerUpLeft()
     {
@@ -73,6 +85,10 @@ public class PlayerMovement : MonoBehaviour
     public void pointerDownRight()
     {
         moveRight = true;
+        if(!isFacingRight)
+        {
+            Flip();
+        }
     }
     public void pointerUpRight()
     {
@@ -97,11 +113,9 @@ public class PlayerMovement : MonoBehaviour
         if(dirX > 0)
         {
             state = MovementState.Running;
-            player.flipX = false;
         } else if(dirX < 0)
         {
             state = MovementState.Running;
-            player.flipX = true;
         }
         else
         {
