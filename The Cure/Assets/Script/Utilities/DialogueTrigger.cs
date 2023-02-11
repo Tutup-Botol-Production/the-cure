@@ -20,7 +20,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             ClearObject();
             FindObjectOfType<DialogueManager>().dialogBox.SetActive(false);
-        } if(bag == 1)
+        } if(bag == 1 && gameObject.CompareTag("bag"))
         {
             ClearObject();
         }

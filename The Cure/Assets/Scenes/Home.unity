@@ -272,6 +272,7 @@ MonoBehaviour:
     sentences:
     - Ini akan sangat berguna untuk mengumpulkan sampel.
   autodialog: 0
+  bag: 0
 --- !u!1 &51078179
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +410,7 @@ MonoBehaviour:
     - Sampai saat gua meneliti, sesuatu jatuh menghantam bumi
     - sebelum umat manusia menyadarinya, itu semua sudah menjadi bencana
   autodialog: 0
+  bag: 0
 --- !u!61 &83124246
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2931,34 +2933,6 @@ PrefabInstance:
     - target: {fileID: 7117942715962590830, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7117942715967531322, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7117942715967531322, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7117942715967531322, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7117942715967531322, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7117942715967531322, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TriggerDialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 7117942715967531322, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DialogueTrigger, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7117942715967531322, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7117942715967531325, guid: bf8e8fa961866844284a1061df9239d8, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target

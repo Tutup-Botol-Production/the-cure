@@ -8,6 +8,7 @@ TagManager:
   - main door
   - reys door
   - autodialog
+  - bag
   layers:
   - Default
   - TransparentFX
