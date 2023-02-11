@@ -1,31 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
     public LevelLoader levelLoader;
-    public TextMeshProUGUI playBtn;
+    public Animator quitBox;
     private int lastScene;
+    private bool IsTrigger;
     private void Awake()
     {
-        //PlayerPrefs.DeleteKey("LastActiveScene");
-        //Debug.Log(PlayerPrefs.GetInt("LastActiveScene"));
+        PlayerPrefs.DeleteKey("LastActiveScene");
+        PlayerPrefs.DeleteKey("playerPosX");
+        PlayerPrefs.DeleteKey("playerPosY");
+        PlayerPrefs.DeleteKey("autodialogOpened");
+        PlayerPrefs.DeleteKey("bagTaken");
         lastScene = PlayerPrefs.GetInt("LastActiveScene", 0);
     }
-    private void Start()
+
+    public void Trigger()
     {
-        if(lastScene == 0)
-        {
-            playBtn.text = "Play";
-        } else if(lastScene > 0)
-        {
-            playBtn.text = "Continue";
-        }
+        IsTrigger = !IsTrigger;
+        quitBox.SetBool("Start", IsTrigger);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void GoToPlay()
     {
         if(lastScene == 0)

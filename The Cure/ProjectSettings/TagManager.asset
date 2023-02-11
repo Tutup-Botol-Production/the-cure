@@ -7,6 +7,7 @@ TagManager:
   - ground
   - main door
   - reys door
+  - autodialog
   layers:
   - Default
   - TransparentFX

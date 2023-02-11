@@ -12,23 +12,10 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogText;
     public float typeSpeed;
     private Queue<string> sentences;
+
     void Start()
     {
-        dialogBox.SetActive(false);
         sentences = new Queue<string>();
-        Invoke("ShowDialogue", 1f);
-    }
-
-    void ShowDialogue()
-    {
-        dialogBox.SetActive(true);
-        dialogBox.GetComponent<Animator>().SetBool("isOpen", true);
-    }
-
-    void HideDialogue()
-    {
-        dialogBox.SetActive(false);
-
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -71,8 +58,15 @@ public class DialogueManager : MonoBehaviour
     void EndOfDialogue()
     {
         dialogBox.GetComponent<Animator>().SetBool("isOpen", false);
-        Invoke("HideDialogue", 1f);
+
+        Invoke("CloseDialogue", 1f);
 
     }
+
+    void CloseDialogue()
+    {
+        dialogBox.SetActive(false);
+    }
+
 
 }
