@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public LevelLoader levelLoader;
+    public Animator TextInjector;
 
-    [HideInInspector] public GameObject itemInteract = null;
+    public GameObject itemInteract = null;
     [HideInInspector] private bool isMenuOpen = false;
 
     [SerializeField] private GameObject subMenu;
@@ -17,7 +18,16 @@ public class GameManager : MonoBehaviour
     {
         if (itemInteract != null && itemInteract.name != "Door")
         {
-            Destroy(itemInteract);
+            if(itemInteract.name == "Injector")
+            {
+                itemInteract.GetComponent<DialogueTrigger>().TriggerDialogue();
+                TextInjector.SetTrigger("Injector");
+            } if(itemInteract.name == "Bag")
+            {
+                itemInteract.GetComponent<DialogueTrigger>().TriggerDialogue();
+                Invoke("ClearItem", 1f);
+                PlayerPrefs.SetInt("bagTaken", 1);
+            }
         } else if (itemInteract.CompareTag("main door"))
         {
             levelLoader.GetComponent<LevelLoader>().LoadNextLevel();
@@ -25,6 +35,11 @@ public class GameManager : MonoBehaviour
         {
             levelLoader.GetComponent<LevelLoader>().LoadPrevLevel();
         }
+    }
+
+    void ClearItem()
+    {
+        Destroy(itemInteract);
     }
 
     public void OnMenuBtnClick()
