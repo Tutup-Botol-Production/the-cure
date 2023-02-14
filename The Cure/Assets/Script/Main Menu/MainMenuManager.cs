@@ -16,6 +16,8 @@ public class MainMenuManager : MonoBehaviour
         PlayerPrefs.DeleteKey("playerPosY");
         PlayerPrefs.DeleteKey("autodialogOpened");
         PlayerPrefs.DeleteKey("bagTaken");
+        PlayerPrefs.DeleteKey("injectorTaken");
+        PlayerPrefs.DeleteKey("objective");
         lastScene = PlayerPrefs.GetInt("LastActiveScene", 0);
     }
 

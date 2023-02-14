@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Dialogue dialogue;
-    public int autodialog;
-    public int bag;
+    [SerializeField] private Dialogue dialogue;
+
+    private int autodialog;
 
     private void Awake()
     {
         autodialog = PlayerPrefs.GetInt("autodialogOpened");
-        bag = PlayerPrefs.GetInt("bagTaken");
     }
 
     private void Start()
@@ -20,9 +19,6 @@ public class DialogueTrigger : MonoBehaviour
         {
             ClearObject();
             FindObjectOfType<DialogueManager>().dialogBox.SetActive(false);
-        } if(bag == 1 && gameObject.CompareTag("bag"))
-        {
-            ClearObject();
         }
     }
 
@@ -31,8 +27,8 @@ public class DialogueTrigger : MonoBehaviour
         if(collision.CompareTag("Player") && gameObject.CompareTag("autodialog"))
         {
             PlayerPrefs.SetInt("autodialogOpened", 1);
-            Invoke("TriggerDialogue", 1f);
-            Invoke("ClearObject", 1.5f);
+            Invoke(nameof(TriggerDialogue), 1f);
+            Invoke(nameof(ClearObject), 1.5f);
         }
     }
 
@@ -45,7 +41,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         FindObjectOfType<DialogueManager>().dialogBox.SetActive(true);
         FindObjectOfType<DialogueManager>().dialogBox.GetComponent<Animator>().SetBool("isOpen", true);
-        Invoke("DialogueStart", .5f);
+        Invoke(nameof(DialogueStart), .5f);
     } 
 
     public void DialogueStart()
